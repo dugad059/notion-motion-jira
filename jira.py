@@ -56,8 +56,8 @@ assigned_issues = get_assigned_jira_issues()
 
 # Example usage:
 #if assigned_issues:
-    #for issue_summary in assigned_issues:
-        #print(issue_summary)
+ #   for issue_summary in assigned_issues:
+  #      print(issue_summary)
 
 
 

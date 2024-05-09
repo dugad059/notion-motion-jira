@@ -2,11 +2,12 @@ import requests
 import json
 import urllib.parse
 import os
-from jira import sum_list
+from jira import get_assigned_jira_issues
 from dotenv import load_dotenv
 
 # Load environment variables from .env file
 load_dotenv()
+sum_list = get_assigned_jira_issues()
 
 # Define the Notion API URLs
 url = f"https://api.notion.com/v1/databases/{os.getenv('notion_database_id')}/query"
