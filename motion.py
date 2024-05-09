@@ -35,7 +35,7 @@ def create_tasks_in_motion(notion_dict):
 
             # Handle the response
             if response.status_code == 201:
-                print('Task created successfully!')
+                print(f'Task "{task["name"]}" created successfully!')
             else:
                 print('Error:', response.status_code)
                 print(response.text)
@@ -44,4 +44,4 @@ def create_tasks_in_motion(notion_dict):
         print("An unexpected error occurred:", e)
 
 # Example usage:
-create_tasks_in_motion(notion_dict)
+#create_tasks_in_motion(notion_dict)
