@@ -1,7 +1,6 @@
-from jira import get_assigned_jira_issues
+from notion_motion import retrieve_notion_tasks
 
-sum_list = get_assigned_jira_issues()
+motion = retrieve_notion_tasks()
 
-# Now you can use assigned_issues as needed
-print(sum_list)
+
 

@@ -14,13 +14,13 @@ def retrieve_notion_tasks():
             "filter": {
                 "and": [
                     {
-                        "property": "motion",
+                        "property": "MOVE",
                         "checkbox": {
                             "equals": True
                         }
                     },
                     {
-                        "property": "Task Status",
+                        "property": "IN",
                         "checkbox": {
                             "equals": False
                         }

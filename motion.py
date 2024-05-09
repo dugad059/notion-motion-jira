@@ -1,11 +1,12 @@
 import requests
 import os
-from notion_motion import notion_dict
+from notion_motion import retrieve_notion_tasks
 from dotenv import load_dotenv
 
 # Load environment variables from .env file
 load_dotenv()
 
+notion_dict = retrieve_notion_tasks()
 
 def create_tasks_in_motion(notion_dict):
     try:

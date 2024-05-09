@@ -100,7 +100,7 @@ def create_tasks(motion_list):
 
         # Check if the request was successful
         if response.status_code == 200:
-            print("Task added successfully.")
+            print(f"Task added successfully. {task_data}")
         else:
             print("Failed to add task:", response.status_code)
 
