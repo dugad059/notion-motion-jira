@@ -100,7 +100,8 @@ def create_tasks(motion_list):
 
         # Check if the request was successful
         if response.status_code == 200:
-            print(f"Task added successfully. {task_data}")
+            task_name = task_data["properties"]["Task"]["title"][0]["text"]["content"]
+            print(f"Task '{task_name}' added successfully to JIRA.")
         else:
             print("Failed to add task:", response.status_code)
 
@@ -108,7 +109,7 @@ def create_tasks(motion_list):
 # Execute all functions
 tasks = retrieve_tasks()
 motion_list = filter_motion(sum_list, tasks)
-create_tasks(motion_list)
+#create_tasks(motion_list)
 
 
 

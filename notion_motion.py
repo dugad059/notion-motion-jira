@@ -63,31 +63,31 @@ def retrieve_notion_tasks():
                 tasks.append(task_name)
 
                 # DURATION
-                duration_property = item['properties'].get('duration')
+                duration_property = item['properties'].get('duration*')
                 duration1 = duration_property['select']['name'] if duration_property and duration_property.get('select') else 'No Duration'
                 duration.append(duration1)
 
                 # PRIORITY
-                priority1 = item['properties']['Priority']['status']['name']
+                priority1 = item['properties']['Priority*']['status']['name']
                 priority.append(priority1)
 
                 # DUE DATE
-                due_date_property = item['properties'].get('Due')
+                due_date_property = item['properties'].get('Due*')
                 due_date = due_date_property['date']['start'] if due_date_property and due_date_property.get('date') else 'No Due Date'
                 due.append(due_date)
 
                 # START DATE
-                start_date_property = item['properties'].get('Start')
+                start_date_property = item['properties'].get('Start*')
                 start_date = start_date_property['date']['start'] if start_date_property and start_date_property.get('date') else 'No Start Date'
                 start.append(start_date)
 
                 # SCHEDULE
-                schedule_property = item['properties'].get('schedule')
+                schedule_property = item['properties'].get('schedule*')
                 schedule1 = schedule_property['select']['name'] if schedule_property and schedule_property.get('select') else 'No Schedule'
                 schedule.append(schedule1)
 
                 # PROJECT
-                project_property = item['properties'].get('project')
+                project_property = item['properties'].get('project*')
                 project1 = project_property['select']['name'] if project_property and project_property.get('select') else 'No Project'
                 project.append(project1)
 
