@@ -73,13 +73,16 @@ def retrieve_notion_tasks():
 
                 # DUE DATE
                 due_date_property = item['properties'].get('Due*')
-                due_date = due_date_property['date']['start'] if due_date_property and due_date_property.get('date') else 'No Due Date'
+                due_date1 = due_date_property['date']['start'] if due_date_property and due_date_property.get('date') else 'No Due Date'
+                due_date =  f"{due_date1}T24:00:00"
                 due.append(due_date)
 
                 # START DATE
                 start_date_property = item['properties'].get('Start*')
-                start_date = start_date_property['date']['start'] if start_date_property and start_date_property.get('date') else 'No Start Date'
+                start_date1 = start_date_property['date']['start'] if start_date_property and start_date_property.get('date') else 'No Start Date'
+                start_date =  f"{start_date1}T00:00:00"
                 start.append(start_date)
+                
 
                 # SCHEDULE
                 schedule_property = item['properties'].get('schedule*')
