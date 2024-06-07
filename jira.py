@@ -1,4 +1,5 @@
 import requests
+from requests.auth import HTTPBasicAuth
 import os
 from dotenv import load_dotenv
 
@@ -8,7 +9,7 @@ load_dotenv()
 def get_assigned_jira_issues():
     try:
         # Set up authentication
-        auth = (os.getenv('jira_username'), os.getenv('jira_api'))
+        auth = HTTPBasicAuth("", "")
         headers = {
             "Accept": "application/json"
         }

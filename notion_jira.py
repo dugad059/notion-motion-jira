@@ -101,7 +101,7 @@ def create_tasks(motion_list):
         # Check if the request was successful
         if response.status_code == 200:
             task_name = task_data["properties"]["Task"]["title"][0]["text"]["content"]
-            print(f"Task '{task_name}' added successfully to JIRA.")
+            print(f"Task '{task_name}' added successfully to NOTION.")
         else:
             print("Failed to add task:", response.status_code)
 

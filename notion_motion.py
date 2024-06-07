@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 # Load environment variables from .env file
 load_dotenv()
 
+
 def retrieve_notion_tasks():
     try:
         # Define the filter criteria
@@ -54,10 +55,15 @@ def retrieve_notion_tasks():
             start = []
             schedule = []
             project = []
+            ids = []
             notion_dict = {}
 
             # Extracting tasks and their attributes
             for item in data['results']:
+                # TASK ID
+                task_id = item['id']
+                ids.append(task_id)
+
                 # TASK
                 task_name = item['properties']['Task']['title'][0]['text']['content']
                 tasks.append(task_name)
@@ -105,6 +111,7 @@ def retrieve_notion_tasks():
         notion_dict['start'] = start
         notion_dict['schedule'] = schedule
         notion_dict['project'] = project
+        notion_dict['ids'] = ids
 
         return notion_dict
 
@@ -115,7 +122,5 @@ def retrieve_notion_tasks():
 
 notion_tasks = retrieve_notion_tasks()
 
-
 # Example usage:
-#if notion_tasks:
-    #print(notion_tasks)
+
