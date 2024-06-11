@@ -29,12 +29,14 @@ def update_notion_task(task_id):
         
         response = requests.patch(url, headers=headers, data=json.dumps(update_data))
         
+        '''
         if response.status_code == 200:
             print(f'Task with ID {task_id} updated successfully in Notion!')
         else:
             print(f'Error updating task with ID {task_id} in Notion:', response.status_code)
             print(response.text)
-            
+        ''' 
+
     except Exception as e:
         print(f"An unexpected error occurred while updating Notion task with ID {task_id}:", e)
 
