@@ -45,13 +45,18 @@ def retrieve_tasks():
 
         # Extracting tasks and their attributes
         for item in data['results']:
-            # TASK
-            task_name = item['properties']['Task']['title'][0]['text']['content']
-            tasks.append(task_name)
+            # Check if 'title' has any elements before accessing it
+            if item['properties']['Task']['title']:
+                task_name = item['properties']['Task']['title'][0]['text']['content']
+                tasks.append(task_name)
+            else:
+                print("Warning: Empty title found in one of the tasks.")
 
         return tasks
     else:
         print("Error:", response.status_code)
+        return None  # Return None if the request fails
+
 
 
 def filter_motion(sum_list, tasks):

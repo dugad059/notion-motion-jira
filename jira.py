@@ -9,7 +9,7 @@ load_dotenv()
 def get_assigned_jira_issues():
     try:
         # Set up authentication
-        auth = HTTPBasicAuth("", "")
+        auth = HTTPBasicAuth("david.dugas@webpt.com", "")
         headers = {
             "Accept": "application/json"
         }

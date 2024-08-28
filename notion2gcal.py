@@ -86,31 +86,30 @@ def retrieve_notion_tasks():
             due_date_property = item['properties'].get('Due*')
             due_date1 = datetime.strptime(due_date_property['date']['start'],
                                            "%Y-%m-%d").date() if due_date_property and due_date_property.get(
-                'date') else 'No Due Date'
+                'date') else None
 
-            today = datetime.now().date()
+            if due_date1:
+                start_time = datetime.combine(due_date1, datetime.strptime('07:00:00', '%H:%M:%S').time())
+                end_time = start_time + timedelta(hours=1)
 
-            start_time = datetime.combine(due_date1, datetime.strptime('07:00:00', '%H:%M:%S').time())
-            end_time = start_time + timedelta(hours=1)
+                start_date = start_time.isoformat()
+                end_date = end_time.isoformat()
 
-            start_date = start_time.isoformat()
-            end_date = end_time.isoformat()
-
-            task = {
-                'summary': task_name,
-                'description': f"Priority: {priority1}\nDuration: {duration1}\nSchedule: {schedule1}\nProject: {project1}",
-                'start': {
-                    'dateTime': start_date,
-                    'timeZone': 'America/New_York',
-                },
-                'end': {
-                    'dateTime': end_date,
-                    'timeZone': 'America/New_York',
-                },
-                'visibility': 'private',
-                'notion_task_id': task_id  # Include the Notion task ID in the task object
-            }
-            tasks.append(task)
+                task = {
+                    'summary': task_name,
+                    'description': f"Priority: {priority1}\nDuration: {duration1}\nSchedule: {schedule1}\nProject: {project1}",
+                    'start': {
+                        'dateTime': start_date,
+                        'timeZone': 'America/New_York',
+                    },
+                    'end': {
+                        'dateTime': end_date,
+                        'timeZone': 'America/New_York',
+                    },
+                    'visibility': 'private',
+                    'notion_task_id': task_id  # Include the Notion task ID in the task object
+                }
+                tasks.append(task)
 
         return tasks
 
@@ -158,7 +157,7 @@ def add_tasks_to_google_calendar(tasks):
 
     for task in tasks:
         try:
-            event = service.events().insert(calendarId='primary', body=task).execute()
+            event = service.events().insert(calendarId='', body=task).execute()
             print(f"Event created for task: {task['summary']}")
             print(f"Event date: {task['start']['dateTime']}")
             update_notion_checkbox(task['notion_task_id'])  # Call the function to update Notion checkbox
